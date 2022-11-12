@@ -1,4 +1,4 @@
 gunicorn
 Flask==2.2.2
-mysql_connector_python==8.0.31
+mysql-connector-python=8.0.31
 Werkzeug==2.2.2
