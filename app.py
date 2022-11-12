@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, request, g, redirect, session
 from werkzeug.security import generate_password_hash, check_password_hash
+import mysql
 import mysql.connector
 from functools import wraps
 import os
@@ -15,7 +16,8 @@ sql = mysql.connector.connect(
         host="b9vaclvircawegwho7zq-mysql.services.clever-cloud.com",
         user="ubekknzap7t50jhg",
         passwd="mBZARSVCORUzGyDeW0IE",
-        database="b9vaclvircawegwho7zq"
+        database="b9vaclvircawegwho7zq",
+        port=3306
     )
 
 
