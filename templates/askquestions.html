@@ -1,0 +1,42 @@
+{% from "showlinks.html" import show_links %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Riddler</title>
+    <link href="/static/favoicon.png" rel="icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'home.css') }}"/>
+  </head>
+  <body>
+    <div class="parent">
+        <div class="header mb-2">
+          {{ show_links(user) }}
+        </div>
+
+        <div class="questions_answered container border text-light p-3">
+          <h1>Riddle Me!</h1>
+          <hr class="text-light"/>
+          <form action="/askquestions" method="POST">
+              <div class="form-floating mb-2">
+                <textarea class="form-control" placeholder="Enter your question here" id="floatingTextarea"
+                          name = "question" required></textarea>
+                  <span class="help-block">Riddle!</span>
+              </div>
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01" >Select Master</label>
+                <select class="form-select" id="inputGroupSelect01" name = "teacher">
+                    {% for teacher in teachers %}
+                    <option value="{{ teacher.0 }}">{{ teacher.1 }}</option>
+                    {% endfor %}
+                </select>
+              </div>
+              <button type="submit" class="btn btn-sm btn-success">Submit</button>
+          </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>

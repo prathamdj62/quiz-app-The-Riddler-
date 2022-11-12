@@ -1,0 +1,46 @@
+{% from "showlinks.html" import show_links %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Riddler</title>
+    <link rel=”icon” href=”/static/favoicon.ico”>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'home.css') }}"/>
+    <script type="text/javascript">
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack()"),0;
+            window.onunload=function(){null;}
+    </script>
+  </head>
+  <body>
+    <div class="parent">
+        <div class="header mb-2">
+          {{ show_links(user) }}
+        </div>
+
+        <div class="questions_answered container border text-light p-3">
+          <h1>Riddler</h1>
+          <hr class="text-light"/>
+          <div>
+            {% for each_question in questions %}
+            <a href = "#" class = "text-light m-3 list-group-item">
+              <h4 class="list-group-item-heading">{{ each_question.1 }}</h4>
+              <p class="list-group-item">Asked By : {{ each_question.2 }}</p>
+              <p class="list-group-item">Answered By : {{ each_question.3 }}</p>
+              <hr />
+            </a>
+            {% endfor %}
+          </div>
+          <div class="clearfix">
+            <a class="btn btn-primary float-left" href="{{ prev }}" >&lAarr; Prev </a>
+            <a class="btn btn-primary float-right" href="{{ next }}" >&rAarr; Next </a>
+          </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>

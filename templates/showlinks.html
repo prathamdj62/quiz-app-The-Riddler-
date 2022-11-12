@@ -1,0 +1,45 @@
+{% macro show_links(user) %}
+<ul class="nav justify-content-center bg-dark p-3">
+  <li class="nav-item">
+    <a class="nav-link active text-light" aria-current="page" href="{{url_for('index')}}">The Riddler!</a>
+  </li>
+  {% if not user %}
+  <li class="nav-item">
+    <a class="nav-link text-light" href="{{url_for('login')}}">Login</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-light" href="{{url_for('register')}}">Register</a>
+  </li>
+  {% endif %}
+
+  {% if user and user.3 == 0 %}
+  <li class="nav-item">
+    <a class="nav-link text-light" href="{{url_for('askquestions')}}">Ask Questions</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-light" href="{{url_for('myquestions')}}">My Questions</a>
+  </li>
+  {% endif %}
+  {% if user and user.3 == 1 %}
+  <li class="nav-item">
+    <a class="nav-link text-light" href="{{url_for('unansweredquestions')}}">Unanswered Questions</a>
+  </li>
+  {% endif %}
+  {% if user and user.4==1 %}
+  <li class="nav-item">
+    <a class="nav-link text-light" href="{{url_for('allusers')}}">List of Users</a>
+  </li>
+  {% endif %}
+  {% if user %}
+  <li class="nav-item">
+    <a class="nav-link text-light" href="{{url_for('logout')}}">Logout</a>
+  </li>
+  {% endif %}
+
+  {% if user %}
+    <li class="nav-item">
+      <a class="nav-link text-light" href="#">User : {{ user.1 }}</a>
+    </li>
+  {% endif %}
+</ul>
+{% endmacro %}
