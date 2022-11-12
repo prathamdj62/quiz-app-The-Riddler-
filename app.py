@@ -1,13 +1,9 @@
+import math
+import os
+from functools import wraps
+import mysql.connector
 from flask import Flask, render_template, url_for, request, g, redirect, session
 from werkzeug.security import generate_password_hash, check_password_hash
-import mysql
-import mysql.connector
-from functools import wraps
-import os
-import math
-
-
-
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)

@@ -1,6 +1,1 @@
 runtime: python37
-env_variables:
-  CLOUD_SQL_USERNAME: afro
-  CLOUD_SQL_PASSWORD: 12345
-  CLOUD_SQL_DATABASE_NAME:
-  CLOUD_SQL_CONNECTION_NAME: fynd-368410:us-central1:demo123
